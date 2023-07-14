@@ -105,11 +105,47 @@ namespace LeoAirlines.Controllers
         {
             return View();
         }
+       
         public ActionResult Contact()
         {
+            
+
             return View();
         }
+        [HttpPost]
+        public ActionResult Contact(FormCollection form)
+        {
+            FeedBack feed = new FeedBack();
+            feed.Name = form["Name"];
+            feed.Email = form["Email"];
+            feed.Subject = form["subject"];
 
+            if (string.IsNullOrEmpty(feed.Name) || string.IsNullOrEmpty(feed.Email) || string.IsNullOrEmpty(feed.Subject) )
+            {
+                TempData["Error"] = "Please fill in all the required fields.";
+                return RedirectToAction("Contact");
+            }
+
+ 
+
+            try
+            {
+                db.FeedBacks.Add(feed);
+                db.SaveChanges();
+
+ 
+
+                TempData["Success"] = "Feedback submitted successfully.";
+                return RedirectToAction("Contact");
+            }
+            catch (Exception ex)
+            {
+                TempData["Error"] = "An error occurred while submitting the feedback.";
+                return RedirectToAction("Contact");
+            }
+
+
+        }
         public ActionResult cost()
         {
 

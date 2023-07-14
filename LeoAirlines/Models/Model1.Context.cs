@@ -38,6 +38,8 @@ public partial class AirportDBEntities : DbContext
 
     public virtual DbSet<StateImg> StateImgs { get; set; }
 
+    public virtual DbSet<FeedBack> FeedBacks { get; set; }
+
 }
 
 }

@@ -11,7 +11,7 @@
 <head>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
-    
+
     <link href="~/css/style.css" rel="stylesheet" />
     <script src="~/js/jquery.min.js"></script>
     <script src="~/js/responsiveslides.min.js"></script>
@@ -28,77 +28,143 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
 </head>
-<body>
-    <style>
-        body {
-            background-image: url('../../images/createpg.png');
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-size: 100% 100%;
-        }
-    </style>
-    <h1 style="margin-left:700px; margin-top:10px; font-family:'Gill Sans MT';color:#151b54"><b>
-    &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GO!<br />
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FLY!!<br />
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EXPLORE!!!
-</b></h1>
-    <section class="sourcedest">
+
+    <body>
+            <style>
+                body {
+                    background-image: url('../../images/run.jpg');
+                    background-repeat: no-repeat;
+                    background-attachment: fixed;
+                    background-size: 100% 100%;
+                }
+
+                .button {
+                    background-color: #357EC7;
+                    border: none;
+                    border-radius: 10px;
+                    color: white;
+                    padding: 12px 18px;
+                    text-align: center;
+                    text-decoration: none;
+                    display: inline-block;
+                    font-size: 16px;
+                    margin: 4px 2px;
+                    cursor: pointer;
+                }
+
+                .autocomplete-items {
+                    position: absolute;
+                    border: 1px solid #d4d4d4;
+                    border-bottom: none;
+                    border-top: none;
+                    z-index: 99;
+                    /*position the autocomplete items to be the same width as the container:*/
+                    top: 100%;
+                    left: 0;
+                    right: 0;
+                }
 
 
 
-        @using (Html.BeginForm("Create", "airportinfoes"))
-        {
+                    .autocomplete-items div {
+                        padding: 10px;
+                        cursor: pointer;
+                        background-color: #fff;
+                        border-bottom: 1px solid #d4d4d4;
+                    }
 
 
 
-            @Html.AntiForgeryToken()
+                        /*when hovering an item:*/
+                        .autocomplete-items div:hover {
+                            background-color: #e9e9e9;
+                        }
 
 
 
-            <p style=" margin-left:30px;margin-top:45px;font-family:'Gill Sans MT';font-size:40px">Source</p>
+                /*when navigating through the items using the arrow keys:*/
+                .autocomplete-active {
+                    background-color: DodgerBlue !important;
+                    color: #ffffff;
+                }
+                .autocomplete {
+                    position: relative;
+                    display: inline-block;
+                    margin-top: 30px;
+                }
 
 
 
-            <!--Make sure the form has the autocomplete function switched off:-->
-    <form autocomplete="on" action="/action_page.php">
-        <div class="autocomplete" style="width: 300px; margin-left: 180px;margin-top:-60px;">
-            <input id="myInput" type="text" name="source" placeholder="search source city">
-        </div>
+                input {
+                    border: 1px solid transparent;
+                    background-color: #f1f1f1;
+                    padding: 10px;
+                    font-size: 16px;
+                }
+
+
+
+                    input[type=text] {
+                        background-color: #f1f1f1;
+                        width: 100%;
+                    }
+
+
+
+                    input[type=submit] {
+                        background-color: DodgerBlue;
+                        color: #fff;
+                        cursor: pointer;
+                    }
+
+            </style>
+            <h1 style="margin-left:320px; margin-top:0px; font-family:'Gill Sans MT';color:steelblue"><b>
+            GO!&nbsp;&nbsp; FLY!!&nbsp;&nbsp;EXPLORE!!!
+        </b></h1>
+            <section class="sourcedest">
+
+
+
+                @using (Html.BeginForm("Create", "airportinfoes"))
+                {
+
+
+
+                    @Html.AntiForgeryToken()
+
+                    <form autocomplete="on" action="/action_page.php">
+
+
+
+                        <div class="autocomplete" style="width: 300px; float: left; margin-left: 50px">
+                            <p style="font-weight: bold; font-size: 20px; font-family: 'Gill Sans MT'; color: #E8E4C9 ">Source</p>
+                            <input id="myInput" type="text" name="source" placeholder="Enter Source City">
+
+                        </div>
 
 
 
 
-        <br>
-        <br>
-        <p style="margin-left: 30px; margin-top: 45px; font-family: 'Gill Sans MT'; font-size: 40px">Destination</p>
 
-        <div class="autocomplete" style="width: 300px; margin-left: 250px; margin-top: -60px;">
-            <input id="myInput1" type="text" name="destination" placeholder="search destination city">
-        </div>
-
-        <div style="margin-left:180px; margin-bottom:10px">
-            <button type="submit" class="btn btn-primary" style="align-content:center;">Submit</button>
-
-        </div>
-    </form>
-            <br />
-            <br />
+                        &nbsp;&nbsp;
 
 
 
-
-           
-        }
-
-
-
-    </section>
-
+                        <div class="autocomplete" style="width: 300px; margin-left: 40px">
+                            <p style="font-weight: bold; font-size: 20px; font-family: 'Gill Sans MT'; color: #E8E4C9 ">Destination</p>
+                            <input id="myInput1" type="text" name="destination" placeholder="Enter Destination City">
+                        </div>
+                        <br />
+                        <br />
 
 
 
+                        <button class="button" type="submit" name="search" style="margin-left:330px; margin-top:30px; font-size:20px" onclick="auto()">SEARCH</button>
+                    </form>
+                }
+
+
+                </section>
 
     <script>
         function autocomplete(inp, arr) {
